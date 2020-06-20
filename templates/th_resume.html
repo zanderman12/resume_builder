@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Joe Bloggs - Curriculum Vitae</title>
+
+<meta name="viewport" content="width=device-width"/>
+<meta name="description" content="The Curriculum Vitae of Joe Bloggs."/>
+<meta charset="UTF-8"> 
+
+<link type="text/css" rel="stylesheet" href="C:/Users/alext/Desktop/projects/resume builder/static/th_style.css">
+<link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
+
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+<body id="top">
+<div id="cv" class="instaFade">
+	<div class="mainDetails">		
+		<div id="name">
+			<h1 class="quickFade delayTwo">{{name}}</h1>
+			<h2 class="quickFade delayThree">{{desired_job_title}}</h2>
+		</div>
+		
+		<div id="contactDetails" class="quickFade delayFour">
+			<ul>
+				<li>e: <a href="mailto:joe@bloggs.com" target="_blank">{{email}}</a></li>
+				<li>w: <a href="http://www.bloggs.com">{{linkedin}}</a></li>
+				<li>m: {{phone}}</li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="mainArea" class="quickFade delayFive">
+		<section>
+			<article>
+				<div class="sectionTitle">
+					<h1>Personal Profile</h1>
+				</div>
+				
+				<div class="sectionContent">
+					<p>{{mission_statement}}</p>
+				</div>
+			</article>
+			<div class="clear"></div>
+		</section>
+		
+		
+		<section>
+			<div class="sectionTitle">
+				<h1>Research Experience</h1>
+			</div>
+			
+			<div class="sectionContent">
+				<article>
+					<h2>{{research1_title}} at {{research1_company}}</h2>
+					<p class="subDetails">{{research1_start}} - {{research1_end}}</p>
+					<p>{{research1_desc}}</p>
+				</article>
+				
+				<article>
+					<h2>{{research2_title}} at {{research2_company}}</h2>
+					<p class="subDetails">{{research2_start}} - {{research2_end}}</p>
+					<p>{{research2_desc}}</p>
+				</article>
+				
+			</div>
+			<div class="clear"></div>
+		</section>
+		
+		<section>
+			<div class="sectionTitle">
+				<h1>Teaching Experience</h1>
+			</div>
+			
+			<div class="sectionContent">
+				<article>
+					<h2>{{teach1_title}} at {{teach1_company}}</h2>
+					<p class="subDetails">{{teach1_start}} - {{teach1_end}}</p>
+					<p>{{teach1_desc}}</p>
+				</article>
+				
+				<article>
+					<h2>{{teach2_title}} at {{teach2_company}}</h2>
+					<p class="subDetails">{{teach2_start}} - {{teach2_end}}</p>
+					<p>{{teach2_desc}}</p>
+				</article>
+				
+			</div>
+			<div class="clear"></div>
+		</section>		
+		
+		<section>
+			<div class="sectionTitle">
+				<h1>Education</h1>
+			</div>
+			
+			<div class="sectionContent">
+				<article>
+					<h2>{{school1}}</h2>
+					<p class="subDetails">{{school1_subhead}}</p>
+					<p>{{school1_desc}}</p>
+				</article>
+				
+				<article>
+					<h2>{{school2}}</h2>
+					<p class="subDetails">{{school2_subhead}}</p>
+					<p>{{school2_desc}}</p>
+				</article>
+			</div>
+			<div class="clear"></div>
+		</section>
+		
+	</div>
+</div>
+
+</body>
+</html>

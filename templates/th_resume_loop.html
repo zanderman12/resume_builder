@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Alex Cates - Curriculum Vitae</title>
+
+<meta name="viewport" content="width=device-width"/>
+<meta name="description" content="The Curriculum Vitae of Joe Bloggs."/>
+<meta charset="UTF-8"> 
+
+<link type="text/css" rel="stylesheet" href="C:/Users/alext/Desktop/projects/resume builder/static/th_style_loop.css">
+<link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
+
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+<body id="top">
+<div id="cv" class="instaFade">
+	<div class="mainDetails">		
+		<div id="name">
+			<h1 class="quickFade delayTwo">{{name}}</h1>
+			<h2 class="quickFade delayThree">{{desired_job_title}}</h2>
+		</div>
+		
+		<div id="contactDetails" class="quickFade delayFour">
+			<ul>
+				<li>e: <a href="mailto:{{email_link}}" target="_blank">{{email}}</a></li>
+				<li>l: <a href="{{linkedin_link}}">{{linkedin}}</a></li>
+				<li>m: {{phone}}</li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="mainArea" class="quickFade delayFive">
+		<section>
+			<article>
+				<div class="sectionTitle">
+					<h1>Personal Profile</h1>
+				</div>
+				
+				<div class="sectionContent">
+					<p>{{mission_statement}}</p>
+				</div>
+			</article>
+			<div class="clear"></div>
+		</section>
+		
+		<section>
+			<div class="sectionTitle">
+				<h1>Education</h1>
+			</div>
+			
+			<div class="sectionContent">
+                {%for e in education%}
+                <article>
+					<h2>{{e['company']}}</h2>
+					<p class="subDetails">{{e['title']}}, {{e['start']}} - {{e['end']}}</p>
+					<p>{{e['desc']}}</p>
+				</article>
+				{%if e['pbreak'] == 'True' %}
+                <p class="new-page"> 
+                     
+                </p>
+                {%endif%}
+				{%endfor%}
+			</div>
+			<div class="clear"></div>
+		</section>
+		
+		<section>
+			<div class="sectionTitle">
+				<h1>Research Experience</h1>
+			</div>
+			
+			<div class="sectionContent">
+                {%for r in research%}
+                <article>
+					<h2>{{r['title']}} at {{r.company}}</h2>
+					<p class="subDetails">{{r['start']}} - {{r['end']}}</p>
+					<p>{{r['desc']}}</p>
+                </article>
+                {%endfor%}
+				
+			</div>
+			<div class="clear"></div>
+		</section>
+		
+		<section>
+			<div class="sectionTitle">
+				<h1>Teaching Experience</h1>
+			</div>
+			
+			<div class="sectionContent">
+                {%for t in teaching%}
+				<article>
+					<h2>{{t['title']}} at {{t['company']}}</h2>
+					<p class="subDetails">{{t['start']}} - {{t['end']}}</p>
+					<p>{{t['desc']}}</p>
+                </article>
+				{%endfor%}
+			</div>
+			<div class="clear"></div>
+		</section>		
+			
+		<section>
+			<div class="sectionTitle">
+				<h1>Publications</h1>
+			</div>
+			
+			<div class="sectionContent">
+                {%for p in publications%}
+                <article>
+					<h2>{{p['title']}}</h2>
+					<p class="subDetails">{{p['company']}}, {{p['end']}}</p>
+					<p>{{p['desc']}}</p>
+				</article>
+				{%endfor%}
+			</div>
+			<div class="clear"></div>
+		</section>
+
+		<section>
+			<div class="sectionTitle">
+				<h1>Awards</h1>
+			</div>
+			
+			<div class="sectionContent">
+                {%for a in awards%}
+                <article>
+					<h2>{{a['title']}}</h2>
+					<p class="subDetails">{{a['company']}}, {{a['end']}}</p>
+				</article>
+				{%endfor%}
+			</div>
+			<div class="clear"></div>
+		</section>
+		
+	</div>
+</div>
+
+</body>
+</html>
