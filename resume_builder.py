@@ -48,7 +48,12 @@ if __name__ == '__main__':
                      'email_link': contact_df.loc['email','link'],
                      'linkedin_link': contact_df.loc['linkedin','link'],
                      'desired_job_title': 'PhD Student',
-                     'mission_statement': textblocks_df.loc['intro', 'text']}
+                     'mission_statement': textblocks_df.loc['intro', 'text'],
+                     'website': 'alexcates.com',
+                     'email_image': 'C:/Users/alext/Desktop/projects/resume_builder/mail.png',
+                     'phone_image': 'C:/Users/alext/Desktop/projects/resume_builder/phone.png',
+                     'website_image': 'C:/Users/alext/Desktop/projects/resume_builder/global.png'
+                     }
     
     
     
@@ -95,5 +100,5 @@ if __name__ == '__main__':
                                 'margin-right': '0in',
                                 'margin-bottom': '0in',
                                 'margin-left': '0in'},
-                     configuration=config, 
+                     configuration=config,
                      css = 'static/th_style_loop.css')

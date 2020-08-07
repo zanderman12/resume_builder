@@ -106,6 +106,7 @@ p {
 section {
 	border-top: 1px solid #dedede;
 	padding: 20px 0 0;
+	page-break-inside: avoid;
 }
 
 section:first-child {
