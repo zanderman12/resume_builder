@@ -49,10 +49,8 @@ if __name__ == '__main__':
                      'linkedin_link': contact_df.loc['linkedin','link'],
                      'desired_job_title': 'PhD Student',
                      'mission_statement': textblocks_df.loc['intro', 'text'],
-                     'website': 'alexcates.com',
-                     'email_image': 'C:/Users/alext/Desktop/projects/resume_builder/mail.png',
-                     'phone_image': 'C:/Users/alext/Desktop/projects/resume_builder/phone.png',
-                     'website_image': 'C:/Users/alext/Desktop/projects/resume_builder/global.png'
+                     'website': contact_df.loc['website', 'contact'],
+                     'website_link': contact_df.loc['website', 'link']
                      }
     
     
@@ -94,7 +92,7 @@ if __name__ == '__main__':
     html_file.close()
     
     #save html to a pdf, make sure to load the appropriate style sheet
-    pdfkit.from_file('test_resume.html', 'test_resume.pdf', 
+    pdfkit.from_file('th_resume_loop.html', 'test_resume.pdf', 
                      options = {'page-size': 'Letter',
                                 'margin-top': '0in',
                                 'margin-right': '0in',
