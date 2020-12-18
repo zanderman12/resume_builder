@@ -10,6 +10,7 @@ import sys
 import jinja2
 import pandas as pd
 import pdfkit
+import datetime
 
 
 sys.path.insert(0, 'C:/Users/alext/Documents/GitHub/Python Scripts')
@@ -19,6 +20,13 @@ def load_gsheet_data(gsheet_id, gsheet_sheet, length_of_gsheet):
     gsheet = rgs.get_google_sheet(gsheet_id, gsheet_sheet)
     gdf = rgs.gsheet2df(gsheet, length_of_gsheet)  
     return gdf
+
+def clean_order(e):
+    if e == 'Current':
+        n = datetime.datetime.now()
+        return n.year
+    else:
+        return int(e)
 
 if __name__ == '__main__':
     
@@ -50,14 +58,14 @@ if __name__ == '__main__':
                      'desired_job_title': 'PhD Student',
                      'mission_statement': textblocks_df.loc['intro', 'text'],
                      'website': contact_df.loc['website', 'contact'],
-                     'website_link': contact_df.loc['website', 'link']
+                     'website_link': 'https://' + contact_df.loc['website', 'link']
                      }
     
     
-    
-    for cat in ['education', 'research', 'teaching', 'publications', 'awards']:
+    entries_df['order_end_year'] = entries_df['end'].apply(lambda x: clean_order(x))
+    for cat in ['education', 'research', 'teaching', 'publications', 'awards', 'presentations']:
         catlist = []
-        for rrow in entries_df[entries_df.section == cat].iterrows():
+        for rrow in entries_df[entries_df.section == cat].sort_values('order_end_year', ascending = False).iterrows():
             row = rrow[1]
             rowdf = {}
             rowdf['title'] = row.title
@@ -92,11 +100,11 @@ if __name__ == '__main__':
     html_file.close()
     
     #save html to a pdf, make sure to load the appropriate style sheet
-    pdfkit.from_file('th_resume_loop.html', 'test_resume.pdf', 
+    pdfkit.from_file('test_resume.html', 'test_resume.pdf', 
                      options = {'page-size': 'Letter',
-                                'margin-top': '0in',
+                                'margin-top': '0.5in',
                                 'margin-right': '0in',
-                                'margin-bottom': '0in',
+                                'margin-bottom': '0.5in',
                                 'margin-left': '0in'},
                      configuration=config,
                      css = 'static/th_style_loop.css')

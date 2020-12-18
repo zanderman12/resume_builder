@@ -15,7 +15,7 @@ article {
 	display:block;
 	page-break-inside: avoid;
 }
-html, body {background: #f3f3f3; font-family: 'Lato', helvetica, arial, sans-serif; font-size: 16px; color: #222;}
+html, body {background: #ffffff; font-family: 'Lato', helvetica, arial, sans-serif; font-size: 16px; color: #222;}
 
 .clear {clear: both;}
 
@@ -29,7 +29,7 @@ p {
 #cv {
 	width: 90%;
 	max-width: 800px;
-	background: #f3f3f3;
+	background: #ffffff;
 	margin: 30px auto;
 }
 
@@ -54,19 +54,6 @@ p {
 
 #mainArea {
 	padding: 0 40px;
-}
-
-#headshot {
-	width: 12.5%;
-	float: left;
-	margin-right: 30px;
-}
-
-#headshot img {
-	width: 100%;
-	height: auto;
-	-webkit-border-radius: 50px;
-	border-radius: 50px;
 }
 
 #name {
@@ -98,15 +85,16 @@ p {
 	transition: all .3s ease-in;
 }
 
-#contactDetails ul li a:hover { 
-	color: #05b1cf;
+footer{
+    display: table;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
-
 
 section {
 	border-top: 1px solid #dedede;
 	padding: 20px 0 0;
-	page-break-inside: avoid;
 }
 
 section:first-child {
@@ -117,14 +105,21 @@ section:last-child {
 	padding: 20px 0 10px;
 }
 
+section div:nth-child(-n + 2) {
+	page-break-inside: avoid;
+}
+
 .sectionTitle {
 	float: left;
 	width: 25%;
+	padding-bottom: 15px;
+	page-break-after: avoid-page;
 }
 
 .sectionContent {
 	float: right;
 	width: 72.5%;
+	page-break-before: avoid-page;
 }
 
 .sectionTitle h1 {
@@ -137,26 +132,14 @@ section:last-child {
 .sectionContent h2 {
 	font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
 	font-size: 1.5em;
-	margin-bottom: -2px;
+	line-height: 85%;
+	margin-bottom: 1px;
+	padding-bottom: 8px;
 }
 
 .subDetails {
 	font-size: 0.8em;
 	font-style: italic;
-	margin-bottom: 3px;
-}
-
-.keySkills {
-	list-style-type: none;
-	-moz-column-count:3;
-	-webkit-column-count:3;
-	column-count:3;
-	margin-bottom: 20px;
-	font-size: 1em;
-	color: #444;
-}
-
-.keySkills ul li {
 	margin-bottom: 3px;
 }
 
@@ -239,8 +222,22 @@ section:last-child {
 	.new-page {
 		page-break-before: always;
 	  }
+
+	#mainArea {
+		padding: 0 25px;
+	}
+	.page {
+		background-color: #dedede;
+	}
+	footer {
+		position:fixed;
+		bottom:0;
+	}
 }
 
+@page {
+	margin-top: 1in;
+}
 @-webkit-keyframes reset {
 	0% {
 		opacity: 0;
@@ -302,62 +299,4 @@ section:last-child {
 	100% {
 		opacity: 1;
 	}
-}
-
-.instaFade {
-    -webkit-animation-name: reset, fade-in;
-    -webkit-animation-duration: 1.5s;
-    -webkit-animation-timing-function: ease-in;
-	
-	-moz-animation-name: reset, fade-in;
-    -moz-animation-duration: 1.5s;
-    -moz-animation-timing-function: ease-in;
-	
-	animation-name: reset, fade-in;
-    animation-duration: 1.5s;
-    animation-timing-function: ease-in;
-}
-
-.quickFade {
-    -webkit-animation-name: reset, fade-in;
-    -webkit-animation-duration: 2.5s;
-    -webkit-animation-timing-function: ease-in;
-	
-	-moz-animation-name: reset, fade-in;
-    -moz-animation-duration: 2.5s;
-    -moz-animation-timing-function: ease-in;
-	
-	animation-name: reset, fade-in;
-    animation-duration: 2.5s;
-    animation-timing-function: ease-in;
-}
- 
-.delayOne {
-	-webkit-animation-delay: 0, .5s;
-	-moz-animation-delay: 0, .5s;
-	animation-delay: 0, .5s;
-}
-
-.delayTwo {
-	-webkit-animation-delay: 0, 1s;
-	-moz-animation-delay: 0, 1s;
-	animation-delay: 0, 1s;
-}
-
-.delayThree {
-	-webkit-animation-delay: 0, 1.5s;
-	-moz-animation-delay: 0, 1.5s;
-	animation-delay: 0, 1.5s;
-}
-
-.delayFour {
-	-webkit-animation-delay: 0, 2s;
-	-moz-animation-delay: 0, 2s;
-	animation-delay: 0, 2s;
-}
-
-.delayFive {
-	-webkit-animation-delay: 0, 2.5s;
-	-moz-animation-delay: 0, 2.5s;
-	animation-delay: 0, 2.5s;
 }

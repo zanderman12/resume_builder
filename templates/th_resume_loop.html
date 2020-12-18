@@ -7,7 +7,7 @@
 <meta name="description" content="The Curriculum Vitae of Joe Bloggs."/>
 <meta charset="UTF-8"> 
 
-<link type="text/css" rel="stylesheet" href="C:/Users/alext/Desktop/projects/resume builder/static/th_style_loop.css">
+<!--<link type="text/css" rel="stylesheet" href="C:/Users/alext/Desktop/projects/resume_builder/static/th_style_loop.css">-->
 <link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
 
 <!--[if lt IE 9]>
@@ -15,14 +15,14 @@
 <![endif]-->
 </head>
 <body id="top">
-<div id="cv" class="instaFade">
+<div id="cv" style='margin-top: 1in'>
 	<div class="mainDetails">		
 		<div id="name">
-			<h1 class="quickFade delayTwo">{{name}}</h1>
-			<h2 class="quickFade delayThree">{{desired_job_title}}</h2>
+			<h1>{{name}}</h1>
+			<h2>{{desired_job_title}}</h2>
 		</div>
 		
-		<div id="contactDetails" class="quickFade delayFour">
+		<div id="contactDetails">
 			<ul>
 				<li>e: <a href="mailto:{{email_link}}" target="_blank">{{email}}</a></li>
 				<li>w: <a href="{{website_link}}">{{website}}</a></li>
@@ -32,7 +32,7 @@
 		<div class="clear"></div>
 	</div>
 	
-	<div id="mainArea" class="quickFade delayFive">
+	<div id="mainArea">
 		<section>
 			<article>
 				<div class="sectionTitle">
@@ -58,11 +58,6 @@
 					<p class="subDetails">{{e['title']}}, {{e['start']}} - {{e['end']}}</p>
 					<p>{{e['desc']}}</p>
 				</article>
-				{%if e['pbreak'] == 'True' %}
-                <p class="new-page"> 
-                     
-                </p>
-                {%endif%}
 				{%endfor%}
 			</div>
 			<div class="clear"></div>
@@ -72,17 +67,16 @@
 			<div class="sectionTitle">
 				<h1>Research Experience</h1>
 			</div>
-			
+			{%for r in research%}
 			<div class="sectionContent">
-                {%for r in research%}
+                
                 <article>
 					<h2>{{r['title']}} at {{r.company}}</h2>
 					<p class="subDetails">{{r['start']}} - {{r['end']}}</p>
 					<p>{{r['desc']}}</p>
                 </article>
-                {%endfor%}
-				
 			</div>
+			{%endfor%}
 			<div class="clear"></div>
 		</section>
 		
@@ -91,15 +85,15 @@
 				<h1>Teaching Experience</h1>
 			</div>
 			
+			{%for t in teaching%}
 			<div class="sectionContent">
-                {%for t in teaching%}
 				<article>
 					<h2>{{t['title']}} at {{t['company']}}</h2>
 					<p class="subDetails">{{t['start']}} - {{t['end']}}</p>
 					<p>{{t['desc']}}</p>
                 </article>
-				{%endfor%}
 			</div>
+			{%endfor%}
 			<div class="clear"></div>
 		</section>		
 			
@@ -107,39 +101,57 @@
 			<div class="sectionTitle">
 				<h1>Publications</h1>
 			</div>
-			
+			{%for p in publications%}
 			<div class="sectionContent">
-                {%for p in publications%}
                 <article>
 					<h2>{{p['title']}}</h2>
 					<p class="subDetails">{{p['company']}}, {{p['end']}}</p>
 					<p>{{p['desc']}}</p>
 				</article>
-				{%endfor%}
 			</div>
+			{%endfor%}
 			<div class="clear"></div>
 		</section>
 
 		<section>
 			<div class="sectionTitle">
+				<h1>Presentations</h1>
+			</div>
+			{%for p in presentations%}
+			<div class="sectionContent">
+                <article>
+					<h2>{{p['title']}}</h2>
+					<p class="subDetails">{{p['company']}}, {{p['end']}}</p>
+					<p>{{p['desc']}}</p>
+				</article>
+			</div>
+			{%endfor%}
+			<div class="clear"></div>
+		</section>
+
+		<section>
+
+			<div class="sectionTitle">
 				<h1>Awards</h1>
 			</div>
-			
+			{%for a in awards%}
 			<div class="sectionContent">
-                {%for a in awards%}
+                
                 <article>
 					<h2>{{a['title']}}</h2>
 					<p class="subDetails">{{a['company']}}, {{a['end']}}</p>
 				</article>
-				{%endfor%}
+				
 			</div>
+			{%endfor%}
 			<div class="clear"></div>
 		</section>
 		
 	</div>
 </div>
 <footer>
-	<p>This resume was generated using a custom python script. Source code is available at <a href="https://github.com/zanderman12/resume_builder">https://github.com/zanderman12/resume_builder</a></p>
+	<p style='line-height:85%'>This resume was generated using a custom python script.</p> 
+	<p>Source code is available at my GitHub: <a href="https://github.com/zanderman12/resume_builder">https://github.com/zanderman12/resume_builder</a></p>
 </footer>
 
 </body>
