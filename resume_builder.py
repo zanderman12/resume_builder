@@ -75,7 +75,12 @@ if __name__ == '__main__':
                 rowdf['end'] = 'Current'
             else:
                 rowdf['end'] = int(row.end)
-            rowdf['desc'] = row.description_1
+            if cat in ['research', 'teaching']:
+                desc = row.description_1.split(': ')
+                rowdf['desc'] = desc[0] + ':'
+                rowdf['bullets'] = desc[1].split('; ')
+            else:
+                rowdf['desc'] = row.description_1
             catlist.append(rowdf)
         template_vars[cat] = catlist
         
@@ -88,7 +93,7 @@ if __name__ == '__main__':
     ##load the template html dox
     templateLoader = jinja2.FileSystemLoader(searchpath="./")
     templateEnv = jinja2.Environment(loader=templateLoader)
-    TEMPLATE_FILE = "templates/th_resume_loop.html"
+    TEMPLATE_FILE = "templates/th_resume_loop_bullets.html"
     template = templateEnv.get_template(TEMPLATE_FILE)
     
     #fill in the variables with the data

@@ -26,6 +26,17 @@ p {
 	color: #444;
 }
 
+ul {
+	font-size: 1em;
+	line-height: 1.4em;
+	margin-bottom: 0px;
+	color: #444;
+	margin-left: 25px
+}
+
+ul:last-child {
+	margin-bottom: 20px;
+}
 #cv {
 	width: 90%;
 	max-width: 800px;
@@ -108,6 +119,8 @@ section:last-child {
 section div:nth-child(-n + 2) {
 	page-break-inside: avoid;
 }
+
+
 
 .sectionTitle {
 	float: left;
