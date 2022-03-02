@@ -35,19 +35,26 @@ if __name__ == '__main__':
     config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
     
     ## pull data from google sheets, 
-    entries_df = load_gsheet_data('1Td8EmLCUS3avoe3sVya7RMu7Rdaqcf01_cNYfgf7wh4', 'entries', 100)
+    # entries_df = load_gsheet_data('1Td8EmLCUS3avoe3sVya7RMu7Rdaqcf01_cNYfgf7wh4', 'entries', 100)
+    entries_df = pd.read_excel('cates_cv_data.xlsx', sheet_name='entries')
     entries_df.columns = entries_df.iloc[0]
-    entries_df.drop(1, axis = 0, inplace = True)
+    entries_df.drop(0, axis = 0, inplace = True)
+    entries_df = entries_df[entries_df.in_resume == 'T']
     
-    textblocks_df = load_gsheet_data('1Td8EmLCUS3avoe3sVya7RMu7Rdaqcf01_cNYfgf7wh4', 'text_blocks', 100)
+    # textblocks_df = load_gsheet_data('1Td8EmLCUS3avoe3sVya7RMu7Rdaqcf01_cNYfgf7wh4', 'text_blocks', 100)
+    textblocks_df = pd.read_excel('cates_cv_data.xlsx', sheet_name='text_blocks')
     textblocks_df.columns = textblocks_df.iloc[0]
-    textblocks_df.drop(1, axis = 0, inplace = True)
+    textblocks_df.drop(0, axis = 0, inplace = True)
+    textblocks_df = textblocks_df[textblocks_df.in_resume == 'T']
     textblocks_df.set_index('loc', inplace = True)
     
-    contact_df = load_gsheet_data('1Td8EmLCUS3avoe3sVya7RMu7Rdaqcf01_cNYfgf7wh4', 'contact_info', 100)
+    # contact_df = load_gsheet_data('1Td8EmLCUS3avoe3sVya7RMu7Rdaqcf01_cNYfgf7wh4', 'contact_info', 100)
+    contact_df = pd.read_excel('cates_cv_data.xlsx', sheet_name='contact_info')
     contact_df.columns = contact_df.iloc[0]
-    contact_df.drop(1, axis = 0, inplace = True)
+    contact_df.drop(0, axis = 0, inplace = True)
+    
     contact_df.set_index('loc', inplace = True)
+    
     
     template_vars = {'name': 'Alexander Cates',
                      'phone': contact_df.loc['phone', 'contact'],
@@ -55,7 +62,7 @@ if __name__ == '__main__':
                      'linkedin': contact_df.loc['linkedin','contact'],
                      'email_link': contact_df.loc['email','link'],
                      'linkedin_link': contact_df.loc['linkedin','link'],
-                     'desired_job_title': 'PhD Student',
+                     'desired_job_title': 'Ph.D. Candidate',
                      'mission_statement': textblocks_df.loc['intro', 'text'],
                      'website': contact_df.loc['website', 'contact'],
                      'website_link': 'https://' + contact_df.loc['website', 'link']
@@ -63,7 +70,8 @@ if __name__ == '__main__':
     
     
     entries_df['order_end_year'] = entries_df['end'].apply(lambda x: clean_order(x))
-    for cat in ['education', 'research', 'teaching', 'publications', 'awards', 'presentations']:
+    for cat in ['education', 'research', 'teaching', 'publications', 
+                'awards', 'presentations', 'service', 'membership', 'data']:
         catlist = []
         for rrow in entries_df[entries_df.section == cat].sort_values('order_end_year', ascending = False).iterrows():
             row = rrow[1]
@@ -75,7 +83,7 @@ if __name__ == '__main__':
                 rowdf['end'] = 'Current'
             else:
                 rowdf['end'] = int(row.end)
-            if cat in ['research', 'teaching']:
+            if cat in ['research', 'teaching', 'service', 'data']:
                 desc = row.description_1.split(': ')
                 rowdf['desc'] = desc[0] + ':'
                 rowdf['bullets'] = desc[1].split('; ')
@@ -83,12 +91,7 @@ if __name__ == '__main__':
                 rowdf['desc'] = row.description_1
             catlist.append(rowdf)
         template_vars[cat] = catlist
-        
-    
-    
-    
-    ## assign data to variables in the template
-    
+            
     
     ##load the template html dox
     templateLoader = jinja2.FileSystemLoader(searchpath="./")
