@@ -34,7 +34,7 @@ if __name__ == '__main__':
     path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
     config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
     
-    ## pull data from google sheets, 
+    ## pull data from google sheets CREDENTIALS NEED TO BE RESET, 
     # entries_df = load_gsheet_data('1Td8EmLCUS3avoe3sVya7RMu7Rdaqcf01_cNYfgf7wh4', 'entries', 100)
     entries_df = pd.read_excel('cates_cv_data.xlsx', sheet_name='entries')
     entries_df.columns = entries_df.iloc[0]
