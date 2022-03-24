@@ -71,7 +71,7 @@ if __name__ == '__main__':
     
     entries_df['order_end_year'] = entries_df['end'].apply(lambda x: clean_order(x))
     for cat in ['education', 'research', 'teaching', 'publications', 
-                'awards', 'presentations', 'service', 'membership', 'data']:
+                'awards', 'presentations', 'service', 'membership']:#, 'data']:
         catlist = []
         for rrow in entries_df[entries_df.section == cat].sort_values('order_end_year', ascending = False).iterrows():
             row = rrow[1]
